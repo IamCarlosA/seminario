@@ -1,0 +1,23 @@
+{
+  "name": "ponderado-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "dotenv -- turbo dev",
+    "build": "turbo build",
+    "start": "node apps/api/dist/main.js"
+  },
+  "keywords": [],
+  "author": "Carlos Alvarado",
+  "license": "ISC",
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.10.0"
+  },
+  "dependencies": {
+    "dotenv-cli": "^7.2.1"
+  }
+}
