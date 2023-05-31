@@ -1,8 +1,12 @@
-import { Typography } from "@mui/material";
+import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
 
 const NotFound = () => {
   const error: any = useRouteError();
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
+
   return (
     <div className="flex h-[calc(100vh-80px)] items-center justify-center p-5 bg-white w-full">
       <div className="text-center">
