@@ -1,8 +1,11 @@
+import { Button, Typography } from "@mui/material";
+
 const Home = () => {
   return (
-    <div style={{}}>
-      <h1>Home</h1>
-      <button
+    <div>
+      <div className="text-base">HOME</div>
+      <Button
+        variant="contained"
         onClick={async () => {
           const response = await fetch("/api/v1/test");
           const data = await response.json();
@@ -10,7 +13,7 @@ const Home = () => {
         }}
       >
         fetch api
-      </button>
+      </Button>
     </div>
   );
 };
