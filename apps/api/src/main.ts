@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import * as morgan from 'morgan';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { AppModule } from './app.module';
 
@@ -19,6 +20,13 @@ async function bootstrap() {
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('/api');
+  const config = new DocumentBuilder()
+    .setTitle('Ponderado example')
+    .setDescription('The ponderado API description')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/v1/docs', app, document);
   const configService = app.get<ConfigService>(ConfigService);
   await app.listen(configService.get('PORT') || 3000);
 }
